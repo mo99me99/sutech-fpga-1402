@@ -48,9 +48,22 @@ entity WATERING is
         M_OUT : out std_logic_vector(2 downto 0);
         L_OUT : out std_logic;
         T_OUT : out std_logic
+        
      );
 end WATERING;
 
-architecture WATERING_ARCH of WATERING is
+architecture WATERING_FSM_ARCH of WATERING is
+    --decleration of a subtype (STATE_TYPE) to define different states:     
+    subtype STATE_TYPE is std_logic_vector(1 downto 0 );
+    signal NEXT_STATE : STATE_TYPE;
+    constant ST2_START : STATE_TYPE :="11";
+    constant ST0_STOP : STATE_TYPE :="00";
+    constant ST1_WATERING : STATE_TYPE :="01";
+    
 begin
+    REG: process(CLK,RESET) begin
+        if RESET = '1' then STATE<=ST2_START;
+        elsif (CLK'event and CLK = '1') then STATE<=NEXT_STATE;
+        end if;
+    end process REG
 end WATERING_ARCH;
