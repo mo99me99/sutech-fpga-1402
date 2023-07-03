@@ -31,13 +31,26 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
+
+
 entity WATERING is
---  Port ( );
+    Port (
+        --inputs : 
+        RESET : in std_logic;
+        CLK : in std_logic;
+        M_IN : in std_logic_vector(2 downto 0);
+        L_IN : in std_logic;
+        T_IN : in std_logic;
+        
+        --outputs : 
+        STATE : out std_logic_vector(1 downto 0);
+        SEG : out std_logic_vector(6 downto 0 );
+        M_OUT : out std_logic_vector(2 downto 0);
+        L_OUT : out std_logic;
+        T_OUT : out std_logic
+     );
 end WATERING;
 
 architecture WATERING_ARCH of WATERING is
-
 begin
-
-
 end WATERING_ARCH;
