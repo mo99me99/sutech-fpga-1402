@@ -42,6 +42,8 @@ architecture TB_WATERING_SYS_ARCH of WATERING_SYS_TESTBENCH is
     signal M_IN,M_OUT :  std_logic_vector(2 downto 0); 
     signal STATE : std_logic_vector(1 downto 0);
     signal SEG :  std_logic_vector(6 downto 0) ;
+    constant clock_period: time := 10 ns;
+    signal stop_the_clock: boolean;
 begin
     PORTMAP : WATERING port map(
         RESET => RESET,
@@ -55,4 +57,32 @@ begin
         L_OUT => L_OUT,
         T_OUT => T_OUT
     );
+    
+  stimulus: process
+  begin
+    -- Put initialisation code here
+
+    RESET <= '1';
+    wait for 5 ns;
+    RESET <= '0';
+    wait for 5 ns;
+
+    -- Put test bench stimulus code here
+
+    stop_the_clock <= true;
+    wait;
+  end process;
+
+    
+    
+    
+  clocking: process
+  begin
+    while not stop_the_clock loop
+      CLK <= '0', '1' after clock_period / 2;
+      wait for clock_period;
+    end loop;
+    wait;
+  end process;
+    
 end architecture TB_WATERING_SYS_ARCH;
