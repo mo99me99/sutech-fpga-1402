@@ -43,4 +43,16 @@ architecture TB_WATERING_SYS_ARCH of WATERING_SYS_TESTBENCH is
     signal STATE : std_logic_vector(1 downto 0);
     signal SEG :  std_logic_vector(6 downto 0) ;
 begin
+    PORTMAP : WATERING port map(
+        RESET => RESET,
+        CLK => CLK,
+        M_IN => M_IN,
+        L_IN => L_IN,
+        T_IN => T_IN,
+        STATE => STATE,
+        SEG => SEG,
+        M_OUT => M_OUT,
+        L_OUT => L_OUT,
+        T_OUT => T_OUT
+    );
 end architecture TB_WATERING_SYS_ARCH;
