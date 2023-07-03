@@ -49,7 +49,7 @@ begin
     
     --In this combinational block we check all input signals to recognize the next state that machine has to take.
     CMB_PROCESS:process(M_IN , L_IN , T_IN , STATE_OUT) begin
-        --default (this way of assignment of default cases , avoids using latch and makes system more clear in synthesis
+        
         case STATE_OUT is 
             -- in this case we just move to stop state because in FSM st2 goes to st0 with lambda
             when ST2_START =>

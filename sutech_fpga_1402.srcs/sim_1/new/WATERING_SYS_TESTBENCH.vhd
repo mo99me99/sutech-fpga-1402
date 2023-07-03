@@ -58,14 +58,14 @@ begin
         T_OUT => T_OUT
     );
     
-  stimulus: process
+  STIMULUS: process
   begin
   
     RESET <= '1';
     wait for 5 ns;
     RESET <= '0';
     wait for 5 ns;
-    
+ 
     --      init     (T=0 and L=0)and(M>011)| (T=1 or L=1) and (M>001)| (T=1 or L=1) and (M<=001) | (T=0 and L=0) and (M<111)|(T=1 or L =1) and (M<011)|    M>=111        |(T=0 and L=0) and (M <= 001) |(T=1 or L=1) and (M>=011)
     T_IN <= '0'   ,  '0' after 10ns         , '1' after 20ns          , '1' after 30ns            ,  '0' after 40ns          , '0' after 50ns          , '0' after 60ns   , '0' after 70ns              , '0' after 80ns        ;
     L_IN <= '0'   ,  '0' after 10ns         , '1' after 20ns          , '0' after 30ns            ,  '0' after 40ns          , '1' after 50ns          , '1' after 60ns   , '0' after 70ns              , '1' after 80ns        ;   
