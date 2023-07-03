@@ -13,10 +13,8 @@
 -- 
 ----------------------------------------------------------------------------------
 
-
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-
 
 entity WATERING_SYS_TESTBENCH is
 end WATERING_SYS_TESTBENCH;
@@ -40,5 +38,9 @@ architecture TB_WATERING_SYS_ARCH of WATERING_SYS_TESTBENCH is
         );
     end component WATERING;
     
+    signal RESET,CLK,L_IN,T_IN,L_OUT,T_OUT : std_logic;
+    signal M_IN,M_OUT :  std_logic_vector(2 downto 0); 
+    signal STATE : std_logic_vector(1 downto 0);
+    signal SEG :  std_logic_vector(6 downto 0) ;
 begin
-end Behavioral;
+end architecture TB_WATERING_SYS_ARCH;
