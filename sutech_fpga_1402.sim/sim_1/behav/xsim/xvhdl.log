@@ -1,2 +1,4 @@
 INFO: [VRFC 10-163] Analyzing VHDL file "G:/SUTECH/Digital/project/sutech_fpga_1402/sutech_fpga_1402.srcs/sources_1/new/watering.vhd" into library xil_defaultlib
 INFO: [VRFC 10-3107] analyzing entity 'WATERING'
+INFO: [VRFC 10-163] Analyzing VHDL file "G:/SUTECH/Digital/project/sutech_fpga_1402/sutech_fpga_1402.srcs/sim_1/new/WATERING_SYS_TESTBENCH.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'WATERING_SYS_TESTBENCH'

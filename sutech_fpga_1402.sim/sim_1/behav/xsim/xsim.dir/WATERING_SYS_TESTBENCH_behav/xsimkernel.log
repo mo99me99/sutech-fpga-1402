@@ -2,3 +2,6 @@ Running: xsim.dir/WATERING_SYS_TESTBENCH_behav/xsimk.exe -simmode gui -wdb WATER
 Design successfully loaded
 Design Loading Memory Usage: 7220 KB (Peak: 7220 KB)
 Design Loading CPU Usage: 0 ms
+Simulation completed
+Simulation Memory Usage: 7812 KB (Peak: 7812 KB)
+Simulation CPU Usage: 0 ms
