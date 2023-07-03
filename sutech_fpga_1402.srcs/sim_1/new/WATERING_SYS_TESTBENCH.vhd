@@ -42,7 +42,7 @@ architecture TB_WATERING_SYS_ARCH of WATERING_SYS_TESTBENCH is
     signal M_IN,M_OUT :  std_logic_vector(2 downto 0); 
     signal STATE : std_logic_vector(1 downto 0);
     signal SEG :  std_logic_vector(6 downto 0) ;
-    constant clock_period: time := 10 ns;
+    constant clock_period: time := 5 ns;
     signal stop_the_clock: boolean;
 begin
     PORTMAP : WATERING port map(
@@ -60,16 +60,18 @@ begin
     
   stimulus: process
   begin
-    -- Put initialisation code here
-
+  
     RESET <= '1';
     wait for 5 ns;
     RESET <= '0';
     wait for 5 ns;
-
-    -- Put test bench stimulus code here
-
-    stop_the_clock <= true;
+    
+    --      init     (T=0 and L=0)and(M>011)| (T=1 or L=1) and (M>001)| (T=1 or L=1) and (M<=001) | (T=0 and L=0) and (M<111)|(T=1 or L =1) and (M<011)|    M>=111        |(T=0 and L=0) and (M <= 001) |(T=1 or L=1) and (M>=011)
+    T_IN <= '0'   ,  '0' after 10ns         , '1' after 20ns          , '1' after 30ns            ,  '0' after 40ns          , '0' after 50ns          , '0' after 60ns   , '0' after 70ns              , '0' after 80ns        ;
+    L_IN <= '0'   ,  '0' after 10ns         , '1' after 20ns          , '0' after 30ns            ,  '0' after 40ns          , '1' after 50ns          , '1' after 60ns   , '0' after 70ns              , '1' after 80ns        ;   
+    M_IN <= "111" ,  "111" after 10ns       , "111" after 20ns        , "001" after 30ns          ,  "010" after 40ns        , "010" after 50ns        , "111" after 60ns , "011" after 70ns            , "100" after 80ns      ;
+    
+    stop_the_clock <= false , true after 200ns;
     wait;
   end process;
 

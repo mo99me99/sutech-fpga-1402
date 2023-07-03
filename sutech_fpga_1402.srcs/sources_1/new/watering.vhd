@@ -49,8 +49,7 @@ begin
     
     --In this combinational block we check all input signals to recognize the next state that machine has to take.
     CMB_PROCESS:process(M_IN , L_IN , T_IN , STATE_OUT) begin
-        --default (this way of assignment of default cases , avoids using latch and makes system more clear in synthesis)
-        NEXT_STATE <= ST2_START;
+        --default (this way of assignment of default cases , avoids using latch and makes system more clear in synthesis
         case STATE_OUT is 
             -- in this case we just move to stop state because in FSM st2 goes to st0 with lambda
             when ST2_START =>
@@ -79,17 +78,19 @@ begin
                     or(M_IN>="111")) then
                         NEXT_STATE <= ST0_STOP;
                 end if;
-            end case;
+            when others =>
+                    NEXT_STATE <= ST2_START;
+            end case;    
         end process CMB_PROCESS;
         
         
     -- in this process a 7-segment output will be generated that shows 'H' while the system is in st1 and watering happens
     --     and shows '-' while system is in state st0 and avoids watering because of situation.
     SEGMENT_PROCESS :process(STATE_OUT) begin
-        if(STATE_OUT = ST0_STOP) then 
-            SEG <= "01110110";
+        if(STATE_OUT = ST0_STOP or STATE_OUT = ST2_START ) then 
+            SEG <= b"0000001";
         elsif(STATE_OUT = ST1_WATERING) then
-            SEG <= "0100000";
+            SEG <= b"0110111";
         end if;
     end process SEGMENT_PROCESS;
     
